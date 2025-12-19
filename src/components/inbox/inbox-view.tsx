@@ -5,15 +5,15 @@ import React, { useState } from 'react';
 import { TicketList } from './ticket-list';
 import { ConversationThread } from './conversation-thread';
 import { RightPanel } from './right-panel';
-import { MOCK_TICKETS, MOCK_CUSTOMERS, MOCK_ORDERS } from '@/data';
+import { INITIAL_TICKETS, INITIAL_CUSTOMERS, DEMO_ORDERS } from '@/data';
 import { Ticket } from '@/types';
 
 const InboxView = () => {
-    const [selectedTicket, setSelectedTicket] = useState<Ticket>(MOCK_TICKETS[0]);
+    const [selectedTicket, setSelectedTicket] = useState<Ticket>(INITIAL_TICKETS[0]);
 
     // Derived state
-    const currentCustomer = MOCK_CUSTOMERS.find(c => c.id === selectedTicket?.customerId);
-    const currentOrders = MOCK_ORDERS.filter(o => o.customerId === selectedTicket?.customerId);
+    const currentCustomer = INITIAL_CUSTOMERS.find(c => c.id === selectedTicket?.customerId);
+    const currentOrders = DEMO_ORDERS.filter(o => o.customerId === selectedTicket?.customerId);
 
     return (
         <div className="h-full grid grid-cols-1 lg:grid-cols-[380px_1fr] xl:grid-cols-[380px_1fr_320px] gap-6 text-left">
@@ -21,7 +21,7 @@ const InboxView = () => {
             <section className="flex flex-col h-full min-h-0">
                 <h2 className="text-xl font-bold text-gray-900 mb-4 px-1">Inbox</h2>
                 <TicketList
-                    tickets={MOCK_TICKETS}
+                    tickets={INITIAL_TICKETS}
                     activeTicketId={selectedTicket?.id}
                     onSelectTicket={setSelectedTicket}
                 />
