@@ -49,8 +49,7 @@ const InboxView = () => {
                 </div>
 
                 <div
-                    className="flex-1 flex items-center justify-between pl-6 border-l h-8 my-auto"
-                    style={{ borderLeftColor: dividerColor }}
+                    className="flex-1 flex items-center justify-between pl-6 h-8 my-auto"
                 >
                     {selectedTicket ? (
                         <>
