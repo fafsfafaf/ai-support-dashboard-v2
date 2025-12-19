@@ -9,6 +9,8 @@ export const ORGANIZATIONS: Organization[] = [
     { id: 'org_5', name: 'Sivara', role: 'Admin', initials: 'S', color: 'bg-gradient-to-br from-rose-400 to-red-500' },
 ];
 
+export const INITIAL_ORGANIZATION = ORGANIZATIONS[0];
+
 export const INITIAL_AGENTS: Agent[] = [
     { id: 'u1', name: 'Erkan Yusufoglu', email: 'erkan@resolvia.ai', initials: 'EY', color: 'bg-indigo-600', activeSince: '15.01.2023' },
     { id: 'u2', name: 'Sarah Smith', email: 'sarah@resolvia.ai', initials: 'SS', color: 'bg-pink-600', activeSince: '01.03.2023' },

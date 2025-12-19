@@ -4,24 +4,13 @@
 import React, { ReactNode } from 'react';
 import { Sidebar } from './sidebar';
 import { Header } from './header';
-
-interface AppShellProps {
-    children: ReactNode;
-    activePage: string;
-    onPageChange: (page: string) => void;
-}
-
 import { ThemeProvider } from '@/context/theme-context';
 
-
-export const AppShell: React.FC<AppShellProps> = ({ children, activePage, onPageChange }) => {
+export const AppShell: React.FC<{ children: ReactNode }> = ({ children }) => {
     return (
         <ThemeProvider>
             <div className="flex h-screen w-full bg-[#FAF9FC] text-gray-900 font-sans overflow-hidden">
-                <Sidebar
-                    activePage={activePage}
-                    setActivePage={onPageChange}
-                />
+                <Sidebar className="hidden lg:flex" />
 
                 <div className="flex-1 flex flex-col min-w-0 h-full">
                     <Header />

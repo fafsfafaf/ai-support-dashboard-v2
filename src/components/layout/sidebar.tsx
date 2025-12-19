@@ -10,6 +10,8 @@ import {
     LogOut
 } from 'lucide-react';
 import { cn } from '@/lib/cn';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 interface SidebarProps {
     activePage?: string;
@@ -21,7 +23,7 @@ interface NavItemProps {
     icon: React.ElementType;
     label: string;
     isActive?: boolean;
-    onClick: () => void;
+    onClick?: () => void;
     badge?: number;
 }
 
@@ -42,14 +44,21 @@ const NavItem: React.FC<NavItemProps> = ({ icon: Icon, label, isActive, onClick,
     );
 };
 
-export const Sidebar: React.FC<SidebarProps> = ({ activePage = 'Inbox', setActivePage = () => { }, className }) => {
+export const Sidebar: React.FC<SidebarProps> = ({ className }) => {
+    const pathname = usePathname();
+
     const navItems = [
-        { id: 'Inbox', label: 'Inbox', icon: Inbox, badge: 12 },
-        { id: 'Dashboard', label: 'Dashboard', icon: LayoutDashboard },
-        { id: 'Knowledge', label: 'Knowledge Base', icon: BookOpen },
-        { id: 'Organisation', label: 'Organizations', icon: Layers },
-        { id: 'Team', label: 'Team', icon: Users },
+        { id: 'Inbox', label: 'Inbox', icon: Inbox, badge: 12, href: '/inbox' },
+        { id: 'Dashboard', label: 'Dashboard', icon: LayoutDashboard, href: '/dashboard' },
+        { id: 'Knowledge', label: 'Knowledge Base', icon: BookOpen, href: '/knowledge' },
+        { id: 'Organisation', label: 'Organizations', icon: Layers, href: '/organisation' },
+        { id: 'Team', label: 'Team', icon: Users, href: '/team' },
     ];
+
+    const isActive = (href: string) => {
+        if (href === '/inbox' && pathname === '/') return true;
+        return pathname?.startsWith(href);
+    };
 
     return (
         <aside className={cn("w-16 lg:w-20 flex flex-col items-center py-6 z-30 flex-shrink-0 h-screen sticky top-0", className)}>
@@ -63,24 +72,25 @@ export const Sidebar: React.FC<SidebarProps> = ({ activePage = 'Inbox', setActiv
 
             <nav className="flex-1 w-full px-2 flex flex-col gap-2">
                 {navItems.map((item) => (
-                    <NavItem
-                        key={item.id}
-                        icon={item.icon}
-                        label={item.label}
-                        isActive={activePage === item.id}
-                        onClick={() => setActivePage(item.id)}
-                        badge={item.badge}
-                    />
+                    <Link key={item.id} href={item.href} className="w-full">
+                        <NavItem
+                            icon={item.icon}
+                            label={item.label}
+                            isActive={isActive(item.href)}
+                            badge={item.badge}
+                        />
+                    </Link>
                 ))}
             </nav>
 
             <div className="mt-auto px-2 flex flex-col gap-2 w-full">
-                <NavItem
-                    icon={Settings}
-                    label="Settings"
-                    isActive={activePage === 'Einstellungen'}
-                    onClick={() => setActivePage('Einstellungen')}
-                />
+                <Link href="/settings/agents" className="w-full">
+                    <NavItem
+                        icon={Settings}
+                        label="Settings"
+                        isActive={pathname?.startsWith('/settings')}
+                    />
+                </Link>
                 <div className="h-px w-8 bg-gray-200/50 mx-auto my-2" />
                 <NavItem
                     icon={LogOut}
