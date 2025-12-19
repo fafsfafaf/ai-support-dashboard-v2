@@ -126,15 +126,15 @@ const InboxView = () => {
         ));
     };
 
-    const handleSendReply = (content: string, attachments: File[]) => {
+    const handleSendReply = (content: string, mode: 'REPLY' | 'NOTE', attachments: File[], cc?: string, bcc?: string) => {
         if (!selectedTicket) return;
 
-        console.log('Sending reply:', content, attachments);
+        console.log('Sending reply:', { content, mode, attachments, cc, bcc });
         // Mock sending
         const newMessage = {
             id: `m_${Date.now()}`,
             sender: 'AGENT' as const,
-            content,
+            content: mode === 'NOTE' ? `[INTERN] ${content}` : content,
             timestamp: new Date().toISOString(),
             attachments: attachments.map(f => ({
                 id: `att_${Date.now()}`,
@@ -306,13 +306,21 @@ const InboxView = () => {
                                 key={ticket.id}
                                 ticket={ticket}
                                 isSelected={selectedTicketId === ticket.id}
-                                onSelect={() => handleTicketSelect(ticket)}
-                                isMultiSelectMode={selectedTicketIds.size > 0}
-                                isChecked={selectedTicketIds.has(ticket.id)}
-                                onToggleSelect={(e) => handleToggleSelect(ticket.id, e)}
+                                onClick={() => handleTicketSelect(ticket)}
+                                isMultiSelected={selectedTicketIds.has(ticket.id)}
+                                onToggleMultiSelect={() => {
+                                    const newSelected = new Set(selectedTicketIds);
+                                    if (newSelected.has(ticket.id)) {
+                                        newSelected.delete(ticket.id);
+                                    } else {
+                                        newSelected.add(ticket.id);
+                                    }
+                                    setSelectedTicketIds(newSelected);
+                                }}
                                 onStatusChange={(s) => handleStatusChange(ticket.id, s)}
                                 onAssign={(a) => handleAssign(ticket.id, a)}
                                 agents={INITIAL_AGENTS}
+                                customers={INITIAL_CUSTOMERS}
                             />
                         ))}
 

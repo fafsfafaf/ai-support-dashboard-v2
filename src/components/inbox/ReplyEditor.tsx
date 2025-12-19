@@ -35,7 +35,7 @@ const dropdownVariants: Variants = {
 };
 
 interface ReplyEditorProps {
-    onSend: (content: string, mode: 'REPLY' | 'NOTE', cc?: string, bcc?: string) => void;
+    onSend: (content: string, mode: 'REPLY' | 'NOTE', attachments: File[], cc?: string, bcc?: string) => void;
     customerEmail?: string;
     initialContent?: string;
 }
@@ -200,7 +200,7 @@ const ReplyEditor = ({ onSend, customerEmail, initialContent = '' }: ReplyEditor
         if (!editorRef.current) return;
         const content = editorRef.current.innerHTML;
         if (!hasContent) return;
-        onSend(content, mode, cc, bcc);
+        onSend(content, mode, attachments, cc, bcc);
         editorRef.current.innerHTML = '';
         setAttachments([]);
         setHasContent(false);
