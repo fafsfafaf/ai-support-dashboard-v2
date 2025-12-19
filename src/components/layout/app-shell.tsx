@@ -1,22 +1,22 @@
 
 "use client";
 
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode } from 'react';
 import { Sidebar } from './sidebar';
 import { Header } from './header';
 
 interface AppShellProps {
     children: ReactNode;
+    activePage: string;
+    onPageChange: (page: string) => void;
 }
 
-export const AppShell: React.FC<AppShellProps> = ({ children }) => {
-    const [activePage, setActivePage] = useState('Inbox');
-
+export const AppShell: React.FC<AppShellProps> = ({ children, activePage, onPageChange }) => {
     return (
         <div className="flex h-screen w-full bg-[#FAF9FC] text-gray-900 font-sans overflow-hidden">
             <Sidebar
                 activePage={activePage}
-                setActivePage={setActivePage}
+                setActivePage={onPageChange}
             />
 
             <div className="flex-1 flex flex-col min-w-0">
