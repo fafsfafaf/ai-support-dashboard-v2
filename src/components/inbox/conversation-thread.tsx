@@ -2,7 +2,6 @@
 import React from 'react';
 import { Ticket } from '@/types';
 import { MessageBubble } from './message-bubble';
-import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { MoreHorizontal, Paperclip, Smile, Bold, Italic, Underline, Link, ChevronDown, Reply, StickyNote, FileText, Send, Languages } from 'lucide-react';
 import { TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -13,7 +12,7 @@ interface ConversationThreadProps {
 
 export const ConversationThread: React.FC<ConversationThreadProps> = ({ ticket }) => {
     return (
-        <Card className="flex flex-col h-full overflow-hidden bg-white shadow-sm border border-gray-200/60 transition-all hover:bg-white">
+        <div className="flex flex-col h-full overflow-hidden bg-white">
 
             <div className="flex-1 overflow-y-auto p-6 bg-white/40">
                 {ticket.messages.map(msg => (
@@ -91,6 +90,6 @@ export const ConversationThread: React.FC<ConversationThreadProps> = ({ ticket }
                     </div>
                 </div>
             </div>
-        </Card>
+        </div>
     );
 };
