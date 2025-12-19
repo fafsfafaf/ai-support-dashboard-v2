@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { Customer, Order } from '@/types';
-import { Card, CardContent } from '@/components/ui/card';
 import { Avatar } from '@/components/ui/avatar';
 import { Mail, MapPin, Package } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -17,7 +16,7 @@ export const RightPanel: React.FC<RightPanelProps> = ({ customer, orders }) => {
 
     return (
         <div className="flex flex-col gap-4 h-full overflow-y-auto pr-1">
-            <Card>
+            <div className="bg-white border-b border-gray-100">
                 <div className="p-4 flex items-center gap-3 border-b border-gray-100">
                     <Avatar fallback={customer.firstName[0] + customer.lastName[0]} className="bg-amber-100 text-amber-700" />
                     <div>
@@ -25,7 +24,7 @@ export const RightPanel: React.FC<RightPanelProps> = ({ customer, orders }) => {
                         <span className="text-xs text-green-600 bg-green-50 px-1.5 py-0.5 rounded border border-green-100">Active Customer</span>
                     </div>
                 </div>
-                <CardContent className="p-4 space-y-3">
+                <div className="p-4 space-y-3">
                     <div className="flex items-center gap-2 text-sm text-gray-600">
                         <Mail size={14} className="text-gray-400" />
                         <span className="truncate">{customer.email}</span>
@@ -47,18 +46,19 @@ export const RightPanel: React.FC<RightPanelProps> = ({ customer, orders }) => {
                         </div>
                     </div>
                     <Button variant="outline" className="w-full text-red-600 border-red-100 hover:bg-red-50 h-8">Block User</Button>
-                </CardContent>
-            </Card>
+                    <Button variant="outline" className="w-full text-red-600 border-red-100 hover:bg-red-50 h-8">Block User</Button>
+                </div>
+            </div>
 
             <h3 className="font-semibold text-gray-900 text-sm pl-1">Recent Orders</h3>
             {orders && orders.length > 0 ? (
                 orders.map(order => (
-                    <Card key={order.id} className="hover:border-primary/30 transition-colors">
+                    <div key={order.id} className="bg-white border border-gray-100">
                         <div className="p-3 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
                             <span className="font-medium text-sm">#{order.id}</span>
                             <span className="text-xs text-gray-400">{order.date}</span>
                         </div>
-                        <CardContent className="p-3">
+                        <div className="p-3">
                             <div className="flex justify-between items-center mb-2">
                                 <span className={cn(
                                     "text-xs px-1.5 py-0.5 rounded border capitalize",
@@ -78,15 +78,16 @@ export const RightPanel: React.FC<RightPanelProps> = ({ customer, orders }) => {
                                 ))}
                                 {order.items.length > 2 && <div className="text-xs text-gray-400 pl-8">+ {order.items.length - 2} more</div>}
                             </div>
-                        </CardContent>
-                    </Card>
+                        </div>
+                    </div>
+
                 ))
             ) : (
-                <Card className="p-8 flex flex-col items-center justify-center text-center text-gray-400 border-dashed">
+                <div className="p-8 flex flex-col items-center justify-center text-center text-gray-400 border border-gray-200 border-dashed bg-white">
                     <Package size={24} className="mb-2 opacity-50" />
                     <p className="text-sm">No orders found</p>
-                </Card>
+                </div>
             )}
-        </div>
+        </div >
     );
 };

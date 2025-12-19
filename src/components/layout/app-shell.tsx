@@ -12,7 +12,7 @@ interface AppShellProps {
 }
 
 import { ThemeProvider } from '@/context/theme-context';
-import { ThemeCustomizer } from '@/components/ui/theme-customizer';
+
 
 export const AppShell: React.FC<AppShellProps> = ({ children, activePage, onPageChange }) => {
     return (
@@ -33,7 +33,6 @@ export const AppShell: React.FC<AppShellProps> = ({ children, activePage, onPage
                     </main>
                 </div>
 
-                <ThemeCustomizer />
             </div>
         </ThemeProvider>
     );
