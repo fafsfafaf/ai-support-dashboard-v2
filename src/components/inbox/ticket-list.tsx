@@ -14,16 +14,7 @@ interface TicketListProps {
 export const TicketList: React.FC<TicketListProps> = ({ tickets, activeTicketId, onSelectTicket }) => {
     return (
         <div className="flex flex-col h-full bg-transparent min-w-0">
-            <div className="mb-4 flex gap-2">
-                <Button variant="outline" size="sm" className="flex-1 gap-2">
-                    <Filter size={14} /> Filter
-                </Button>
-                <Button variant="outline" size="sm" className="flex-1 gap-2">
-                    <ArrowUpDown size={14} /> Sortieren
-                </Button>
-            </div>
-
-            <div className="flex-1 overflow-y-auto pr-2 scrollbar-hide">
+            <div className="flex-1 overflow-y-auto px-4 py-4 scrollbar-hide space-y-3">
                 {tickets.map((ticket) => (
                     <TicketListItem
                         key={ticket.id}

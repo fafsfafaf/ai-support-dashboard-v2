@@ -26,10 +26,10 @@ export const TicketListItem: React.FC<TicketListItemProps> = ({ ticket, isActive
         <div
             onClick={onClick}
             className={cn(
-                "p-3 rounded-xl border mb-3 cursor-pointer transition-all hover:shadow-md",
+                "p-3 rounded-lg border cursor-pointer transition-all hover:shadow-sm",
                 isActive
-                    ? "bg-white border-primary/40 shadow-sm ring-1 ring-primary/10"
-                    : "bg-white border-gray-200 hover:border-gray-300"
+                    ? "bg-blue-50/10 border-blue-500 shadow-sm ring-1 ring-blue-500/20"
+                    : "bg-white border-gray-200 hover:border-blue-300"
             )}
         >
             <div className="flex justify-between items-start mb-2">
