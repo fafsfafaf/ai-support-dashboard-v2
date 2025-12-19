@@ -10,6 +10,7 @@ import { Ticket } from '@/types';
 import { DashboardShell } from '../layout/dashboard-shell';
 import { useTheme } from '@/context/theme-context';
 import { Filter, ArrowUpDown, ChevronDown, MoreHorizontal } from 'lucide-react';
+import { cn } from '@/lib/cn';
 
 const InboxView = () => {
     const { dividerColor } = useTheme();
@@ -53,22 +54,32 @@ const InboxView = () => {
                 >
                     {selectedTicket ? (
                         <>
-                            <div className="flex flex-col justify-center">
-                                <h3 className="font-semibold text-[#1D1C21] text-sm truncate max-w-xl">
+                            <div className="flex flex-col justify-center min-w-0 pr-4">
+                                <h3 className="font-bold text-[#1D1C21] text-base truncate">
                                     {selectedTicket.subject}
                                 </h3>
+                                <div className="flex items-center gap-2 text-xs text-gray-500 mt-0.5">
+                                    <span>via {selectedTicket.channel || 'EMAIL'}</span>
+                                    <span>•</span>
+                                    <span>Ticket #{selectedTicket.id}</span>
+                                </div>
                             </div>
 
-                            <div className="flex items-center gap-2">
-                                <button className="p-1.5 hover:bg-gray-100 rounded-md text-gray-500">
-                                    <ChevronDown className="h-5 w-5" />
+                            <div className="flex items-center gap-2 shrink-0">
+                                <button className="px-3 py-1 bg-white border border-gray-200 rounded-lg text-xs font-semibold text-gray-700 shadow-sm hover:bg-gray-50 transition-colors">
+                                    Resolve
                                 </button>
-                                <button className="p-1.5 hover:bg-gray-100 rounded-md text-gray-500">
+                                <button className="p-1.5 hover:bg-gray-100 rounded-md text-gray-400 hover:text-gray-600 transition-colors">
                                     <MoreHorizontal className="h-5 w-5" />
                                 </button>
                                 <div className="h-4 w-px bg-gray-200 mx-1" />
-                                <span className="text-xs font-semibold px-2.5 py-1 bg-gray-100 text-gray-600 rounded-full border border-gray-200 uppercase tracking-wide">
-                                    Geschlossen
+                                <span className={cn(
+                                    "text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wide border",
+                                    selectedTicket.status === 'closed'
+                                        ? "bg-gray-100 text-gray-600 border-gray-200"
+                                        : "bg-amber-50 text-amber-700 border-amber-200"
+                                )}>
+                                    {selectedTicket.status === 'closed' ? 'Geschlossen' : 'Offen'}
                                 </span>
                             </div>
                         </>

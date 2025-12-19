@@ -13,21 +13,7 @@ interface ConversationThreadProps {
 
 export const ConversationThread: React.FC<ConversationThreadProps> = ({ ticket }) => {
     return (
-        <Card className="flex flex-col h-full overflow-hidden bg-white shadow-sm border border-gray-200/60">
-            <div className="p-4 border-b border-gray-100 flex justify-between items-center bg-white/50 backdrop-blur-sm sticky top-0 z-10">
-                <div>
-                    <h2 className="font-semibold text-gray-900 text-lg mb-0.5">{ticket.subject}</h2>
-                    <div className="flex items-center gap-2 text-xs text-gray-500">
-                        <span>via {ticket.channel}</span>
-                        <span>•</span>
-                        <span>Ticket #{ticket.id}</span>
-                    </div>
-                </div>
-                <div className="flex gap-2">
-                    <Button variant="outline" size="sm" className="hidden sm:inline-flex">Resolve</Button>
-                    <Button variant="ghost" size="icon"><MoreHorizontal size={18} /></Button>
-                </div>
-            </div>
+        <Card className="flex flex-col h-full overflow-hidden bg-white shadow-sm border border-gray-200/60 transition-all hover:bg-white">
 
             <div className="flex-1 overflow-y-auto p-6 bg-white/40">
                 {ticket.messages.map(msg => (
