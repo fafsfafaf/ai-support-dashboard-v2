@@ -33,7 +33,7 @@ const NavItem: React.FC<NavItemProps> = ({ icon: Icon, label, isActive, onClick,
                 "group relative flex items-center justify-center lg:justify-start w-full p-3 rounded-xl transition-all duration-200 mb-1",
                 isActive
                     ? "bg-[#F2ECF9] text-[#6024B9] font-medium shadow-sm"
-                    : "text-gray-500 hover:bg-gray-100/50 hover:text-gray-900"
+                    : "text-[#1D1C21] hover:bg-gray-100/50 hover:text-gray-900"
             )}
             title={label}
         >
@@ -53,10 +53,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ activePage = 'Inbox', setActiv
 
     return (
         <aside className={cn("w-16 lg:w-20 flex flex-col items-center py-6 z-30 flex-shrink-0 h-screen sticky top-0", className)}>
-            <div className="mb-8">
-                <div className="h-10 w-10 bg-[#6024B9] rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-[#6024B9]/20">
-                    R
-                </div>
+            <div className="mb-8 flex items-center justify-center w-full px-2">
+                <img
+                    src="https://recruitee.com/hubfs/raw_assets/public/Tellent_Theme_V3/bright/templates/assets/logo/tellent-logo.svg"
+                    alt="Recruitee"
+                    className="h-8 w-auto min-w-[32px] object-contain"
+                />
             </div>
 
             <nav className="flex-1 w-full px-2 flex flex-col gap-2">

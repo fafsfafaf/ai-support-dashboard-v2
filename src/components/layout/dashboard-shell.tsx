@@ -12,7 +12,7 @@ interface DashboardShellProps {
 export const DashboardShell: React.FC<DashboardShellProps> = ({ children, className }) => {
     return (
         <div className={cn(
-            "bg-white rounded-[32px] shadow-sm border border-black/[0.02] overflow-hidden flex flex-col h-full",
+            "bg-white rounded-[32px] shadow-sm border-[3px] border-[#D8E0E3] overflow-hidden flex flex-col h-full",
             className
         )}>
             {children}
