@@ -9,7 +9,7 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ className }) => {
     return (
-        <header className={cn("h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6 z-20", className)}>
+        <header className={cn("h-16 flex items-center justify-between px-6 z-20", className)}>
             {/* Logo - Temporary Recruitee placeholder */}
             <div className="flex-1 flex items-center gap-3">
                 <img
@@ -26,7 +26,7 @@ export const Header: React.FC<HeaderProps> = ({ className }) => {
                     </div>
                     <input
                         type="text"
-                        className="block w-full pl-10 pr-3 py-2 border border-gray-200 rounded-lg leading-5 bg-gray-50 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out"
+                        className="block w-full pl-10 pr-3 py-2 border border-gray-200/60 rounded-xl leading-5 bg-white/50 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-1 focus:ring-[#6024B9] focus:border-[#6024B9] sm:text-sm transition duration-150 ease-in-out shadow-sm"
                         placeholder="Suchen... (Tickets, Kunden, Bestellungen)"
                     />
                     <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
@@ -36,23 +36,23 @@ export const Header: React.FC<HeaderProps> = ({ className }) => {
             </div>
 
             <div className="flex-1 flex justify-end items-center gap-4">
-                <button className="text-gray-500 hover:text-gray-700 transition">
-                    <HelpCircle className="h-5 w-5" />
-                </button>
-                <button className="text-gray-500 hover:text-gray-700 transition">
-                    <Bell className="h-5 w-5" />
-                </button>
-                <button className="text-gray-500 hover:text-gray-700 transition">
+                <button className="text-gray-500 hover:text-gray-700 transition lg:hidden">
                     <Settings className="h-5 w-5" />
                 </button>
 
-                <div className="h-6 w-px bg-gray-200 mx-1" />
-
-                <button className="flex items-center gap-2 text-gray-700 hover:text-gray-900">
-                    <div className="h-8 w-8 bg-[hsl(264,67%,43%)]/10 rounded-full flex items-center justify-center text-[hsl(264,67%,43%)] font-medium text-sm">
-                        JD
-                    </div>
-                </button>
+                <div className="flex items-center gap-4">
+                    <button className="text-gray-500 hover:text-gray-700 transition">
+                        <HelpCircle className="h-5 w-5" />
+                    </button>
+                    <button className="text-gray-500 hover:text-gray-700 transition">
+                        <Bell className="h-5 w-5" />
+                    </button>
+                    <button className="flex items-center gap-2 text-gray-700 hover:text-gray-900">
+                        <div className="h-8 w-8 bg-[#6024B9]/10 rounded-full flex items-center justify-center text-[#6024B9] font-medium text-sm">
+                            JD
+                        </div>
+                    </button>
+                </div>
             </div>
         </header>
     );

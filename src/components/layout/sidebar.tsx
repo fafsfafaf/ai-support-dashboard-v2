@@ -32,12 +32,12 @@ const NavItem: React.FC<NavItemProps> = ({ icon: Icon, label, isActive, onClick,
             className={cn(
                 "group relative flex items-center justify-center lg:justify-start w-full p-3 rounded-xl transition-all duration-200 mb-1",
                 isActive
-                    ? "bg-[hsl(264,67%,43%)]/10 text-[hsl(264,67%,43%)] font-medium"
-                    : "text-gray-500 hover:bg-gray-100 hover:text-gray-900"
+                    ? "bg-[#F2ECF9] text-[#6024B9] font-medium shadow-sm"
+                    : "text-gray-500 hover:bg-gray-100/50 hover:text-gray-900"
             )}
             title={label}
         >
-            <Icon className={cn("h-5 w-5 flex-shrink-0", isActive && "text-[hsl(264,67%,43%)]")} />
+            <Icon className={cn("h-5 w-5 flex-shrink-0", isActive && "text-[#6024B9]")} />
         </button>
     );
 };
@@ -52,9 +52,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ activePage = 'Inbox', setActiv
     ];
 
     return (
-        <aside className={cn("w-16 lg:w-20 bg-white border-r border-gray-200 flex flex-col items-center py-6 z-30 flex-shrink-0 h-screen sticky top-0", className)}>
+        <aside className={cn("w-16 lg:w-20 flex flex-col items-center py-6 z-30 flex-shrink-0 h-screen sticky top-0", className)}>
             <div className="mb-8">
-                <div className="h-10 w-10 bg-[hsl(264,67%,43%)] rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-[hsl(264,67%,43%)]/20">
+                <div className="h-10 w-10 bg-[#6024B9] rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-[#6024B9]/20">
                     R
                 </div>
             </div>
@@ -79,7 +79,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activePage = 'Inbox', setActiv
                     isActive={activePage === 'Einstellungen'}
                     onClick={() => setActivePage('Einstellungen')}
                 />
-                <div className="h-px w-8 bg-gray-200 mx-auto my-2" />
+                <div className="h-px w-8 bg-gray-200/50 mx-auto my-2" />
                 <NavItem
                     icon={LogOut}
                     label="Logout"
