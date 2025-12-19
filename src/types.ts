@@ -1,6 +1,4 @@
 
-import React from 'react';
-
 export type UserRole = 'OWNER' | 'ADMIN' | 'AGENT';
 export type TicketStatus = 'open' | 'waiting' | 'closed' | 'resolved_ai' | 'under_review' | 'on_hold';
 export type OrderStatus = 'PAID' | 'UNPAID' | 'PART_REFUNDED' | 'CANCELED' | 'SHIPPED';
@@ -16,9 +14,9 @@ export interface TicketMessage {
 }
 
 export interface TicketDraft {
-    content: string;
-    timestamp: string;
-    author: 'AI' | 'AGENT';
+  content: string;
+  timestamp: string;
+  author: 'AI' | 'AGENT';
 }
 
 export interface Ticket {
@@ -61,13 +59,13 @@ export interface Customer {
 }
 
 export interface Agent {
-    id: string;
-    name: string;
-    email: string;
-    initials: string;
-    avatar?: string;
-    color?: string;
-    activeSince?: string;
+  id: string;
+  name: string;
+  email: string;
+  initials: string;
+  avatar?: string;
+  color?: string;
+  activeSince?: string;
 }
 
 export interface OrderLineItem {
@@ -98,50 +96,49 @@ export interface Order {
 }
 
 export interface ReturnItem {
-    id: string;
-    productName: string;
-    sku: string;
-    quantity: number;
-    reason: string;
-    condition: string;
-    price: number;
-    imageUrl?: string;
+  id: string;
+  productName: string;
+  sku: string;
+  quantity: number;
+  reason: string;
+  condition: string;
+  price: number;
+  imageUrl?: string;
 }
 
 export interface Return {
-    id: string;
-    orderId: string;
-    customerId: string;
-    status: ReturnStatus;
-    createdAt: string;
-    updatedAt: string;
-    items: ReturnItem[];
-    refundAmount: number;
-    trackingNumber?: string;
-    customerComment?: string;
+  id: string;
+  orderId: string;
+  customerId: string;
+  status: ReturnStatus;
+  createdAt: string;
+  updatedAt: string;
+  items: ReturnItem[];
+  refundAmount: number;
+  trackingNumber?: string;
+  customerComment?: string;
 }
 
 export interface Organization {
-    id: string;
-    name: string;
-    role: string;
-    initials: string;
-    color: string;
+  id: string;
+  name: string;
+  role: string;
+  initials: string;
+  color: string;
 }
 
 export interface SecurityLog {
-    id: string;
-    event: string;
-    status: 'SUCCESS' | 'FAILED' | 'WARNING';
-    user: string;
-    ip: string;
-    timestamp: string;
-    location: string;
+  id: string;
+  event: string;
+  status: 'SUCCESS' | 'FAILED' | 'WARNING';
+  user: string;
+  ip: string;
+  timestamp: string;
+  location: string;
 }
 
 export interface IntegrationProvider {
-    code: string;
-    name: string;
-    description: string;
-    icon: React.ReactNode;
+  code: string;
+  name: string;
+  description: string;
 }

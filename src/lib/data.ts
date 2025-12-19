@@ -1,6 +1,4 @@
 
-import React from 'react';
-import { ShoppingBag, Truck, CreditCard } from 'lucide-react';
 import { Organization, Customer, Ticket, SecurityLog, Order, IntegrationProvider, Agent, Return } from '../types';
 
 export const ORGANIZATIONS: Organization[] = [
@@ -263,9 +261,9 @@ export const DEMO_RETURNS: Return[] = [
 ];
 
 export const INTEGRATION_PROVIDERS: IntegrationProvider[] = [
-    { code: 'shopify', name: 'Shopify', description: 'Sync orders and customers', icon: <ShoppingBag /> },
-    { code: 'dhl', name: 'DHL', description: 'Shipping status updates', icon: <Truck /> },
-    { code: 'stripe', name: 'Stripe', description: 'Payment information', icon: <CreditCard /> },
+    { code: 'shopify', name: 'Shopify', description: 'Sync orders and customers' },
+    { code: 'dhl', name: 'DHL', description: 'Shipping status updates' },
+    { code: 'stripe', name: 'Stripe', description: 'Payment information' },
 ];
 
 export const EMOJIS = ['😀', '😂', '🥲', '😍', '🤔', '👍', '👎', '🙏', '🔥', '🎉', '👋', '👀', '❤️', '✅', '❌', '😭', '🤯', '😱'];

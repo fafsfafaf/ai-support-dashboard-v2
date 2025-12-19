@@ -1,6 +1,4 @@
 
-import React from 'react';
-
 export type UserRole = 'OWNER' | 'ADMIN' | 'AGENT';
 export type TicketStatus = 'open' | 'waiting' | 'closed' | 'resolved_ai' | 'under_review' | 'on_hold';
 export type OrderStatus = 'PAID' | 'UNPAID' | 'PART_REFUNDED' | 'CANCELED' | 'SHIPPED';
@@ -143,5 +141,4 @@ export interface IntegrationProvider {
     code: string;
     name: string;
     description: string;
-    icon: React.ReactNode;
 }
