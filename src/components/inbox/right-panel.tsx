@@ -15,38 +15,36 @@ export const RightPanel: React.FC<RightPanelProps> = ({ customer, orders }) => {
     if (!customer) return null;
 
     return (
-        <div className="flex flex-col gap-4 h-full overflow-y-auto pr-1">
-            <div className="bg-white border-b border-gray-100">
-                <div className="p-4 flex items-center gap-3 border-b border-gray-100">
-                    <Avatar fallback={customer.firstName[0] + customer.lastName[0]} className="bg-amber-100 text-amber-700" />
-                    <div>
-                        <h3 className="font-semibold text-gray-900">{customer.firstName} {customer.lastName}</h3>
-                        <span className="text-xs text-green-600 bg-green-50 px-1.5 py-0.5 rounded border border-green-100">Active Customer</span>
+        <div className="flex flex-col h-full overflow-y-auto bg-white">
+            {/* Header: Avatar & Name */}
+            <div className="p-6 pb-2 flex items-center gap-4">
+                <Avatar
+                    fallback={`${customer.firstName[0]}${customer.lastName[0]}`}
+                    className="h-12 w-12 bg-[#D61F69] text-white text-lg font-medium"
+                />
+                <h2 className="text-lg font-bold text-gray-900">{customer.firstName} {customer.lastName}</h2>
+            </div>
+
+            {/* Kundeninfos Section */}
+            <div className="px-6 py-4">
+                <h3 className="font-bold text-gray-900 mb-3 text-sm">Kundeninfos</h3>
+                <div className="border border-gray-200 rounded-2xl p-4 space-y-4 text-sm">
+                    <div className="flex justify-between items-center">
+                        <span className="text-gray-500">Email</span>
+                        <span className="font-medium text-gray-900">{customer.email}</span>
                     </div>
-                </div>
-                <div className="p-4 space-y-3">
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
-                        <Mail size={14} className="text-gray-400" />
-                        <span className="truncate">{customer.email}</span>
+                    <div className="flex justify-between items-center">
+                        <span className="text-gray-500">Lifetime Value</span>
+                        <span className="font-medium text-gray-900">{customer.ltv} EUR</span>
                     </div>
-                    {customer.address && (
-                        <div className="flex items-start gap-2 text-sm text-gray-600">
-                            <MapPin size={14} className="text-gray-400 mt-0.5" />
-                            <span>{customer.address.city}, {customer.address.country}</span>
-                        </div>
-                    )}
-                    <div className="grid grid-cols-2 gap-2 pt-2">
-                        <div className="bg-gray-50 p-2 rounded-lg text-center">
-                            <div className="text-xs text-gray-400">Lifetime Value</div>
-                            <div className="font-semibold text-gray-900">€{customer.ltv}</div>
-                        </div>
-                        <div className="bg-gray-50 p-2 rounded-lg text-center">
-                            <div className="text-xs text-gray-400">Orders</div>
-                            <div className="font-semibold text-gray-900">{customer.orderCount}</div>
-                        </div>
+                    <div className="flex justify-between items-center">
+                        <span className="text-gray-500">Bestellungen</span>
+                        <span className="font-medium text-gray-900">{customer.orderCount}</span>
                     </div>
-                    <Button variant="outline" className="w-full text-red-600 border-red-100 hover:bg-red-50 h-8">Block User</Button>
-                    <Button variant="outline" className="w-full text-red-600 border-red-100 hover:bg-red-50 h-8">Block User</Button>
+                    <div className="flex justify-between items-center">
+                        <span className="text-gray-500">Kunde seit</span>
+                        <span className="font-medium text-gray-900">{customer.since || '15.12.2025'}</span>
+                    </div>
                 </div>
             </div>
 
