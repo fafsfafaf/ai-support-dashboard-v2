@@ -10,8 +10,13 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ className }) => {
     return (
         <header className={cn("h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6 z-20", className)}>
-            <div className="flex-1 opacity-100 font-semibold text-gray-700">
-                Inbox
+            {/* Logo - Temporary Recruitee placeholder */}
+            <div className="flex-1 flex items-center gap-3">
+                <img
+                    src="https://recruitee.com/hubfs/raw_assets/public/Tellent_Theme_V3/bright/templates/assets/logo/tellent-logo.svg"
+                    alt="Logo"
+                    className="h-6"
+                />
             </div>
 
             <div className="flex-1 flex justify-center max-w-2xl mx-4">
