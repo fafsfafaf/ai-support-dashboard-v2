@@ -8,9 +8,11 @@ import { RightPanel } from './right-panel';
 import { INITIAL_TICKETS, INITIAL_CUSTOMERS, DEMO_ORDERS } from '@/lib/data';
 import { Ticket } from '@/types';
 import { DashboardShell } from '../layout/dashboard-shell';
+import { useTheme } from '@/context/theme-context';
 import { Filter, ArrowUpDown, ChevronDown, MoreHorizontal } from 'lucide-react';
 
 const InboxView = () => {
+    const { dividerColor } = useTheme();
     const [selectedTicket, setSelectedTicket] = useState<Ticket>(INITIAL_TICKETS[0]);
 
     // Derived state
@@ -20,23 +22,35 @@ const InboxView = () => {
     return (
         <DashboardShell className="flex flex-col h-full divide-y divide-[#D8E0E3]">
             {/* Top Bar (Unified Header) */}
-            <header className="h-16 px-4 flex items-center justify-between shrink-0 bg-white">
+            <header
+                className="h-16 px-4 flex items-center justify-between shrink-0 bg-white"
+                style={{ borderBottom: `1px solid ${dividerColor}` }}
+            >
                 <div className="flex items-center gap-4 w-[380px] shrink-0 pr-4">
                     <h2 className="text-xl font-bold text-[#1D1C21]">Inbox</h2>
 
                     <div className="flex items-center gap-2">
-                        <button className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-[#D8E0E3] rounded-lg text-sm font-medium text-[#1D1C21] hover:bg-gray-50 transition-colors">
+                        <button
+                            className="flex items-center gap-1.5 px-3 py-1.5 bg-white border rounded-lg text-sm font-medium text-[#1D1C21] hover:bg-gray-50 transition-colors"
+                            style={{ borderColor: dividerColor }}
+                        >
                             <Filter className="h-3.5 w-3.5 text-gray-500" />
                             <span>Filter</span>
                         </button>
-                        <button className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-[#D8E0E3] rounded-lg text-sm font-medium text-[#1D1C21] hover:bg-gray-50 transition-colors">
+                        <button
+                            className="flex items-center gap-1.5 px-3 py-1.5 bg-white border rounded-lg text-sm font-medium text-[#1D1C21] hover:bg-gray-50 transition-colors"
+                            style={{ borderColor: dividerColor }}
+                        >
                             <ArrowUpDown className="h-3.5 w-3.5 text-gray-500" />
                             <span>Sortieren</span>
                         </button>
                     </div>
                 </div>
 
-                <div className="flex-1 flex items-center justify-between pl-6 border-l border-[#D8E0E3] h-8 my-auto">
+                <div
+                    className="flex-1 flex items-center justify-between pl-6 border-l h-8 my-auto"
+                    style={{ borderLeftColor: dividerColor }}
+                >
                     {selectedTicket ? (
                         <>
                             <div className="flex flex-col justify-center">
@@ -65,9 +79,12 @@ const InboxView = () => {
             </header>
 
             {/* Main Layout (3 Columns) */}
-            <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-[380px_1fr] xl:grid-cols-[380px_1fr_320px] divide-x divide-[#D8E0E3]">
+            <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-[380px_1fr] xl:grid-cols-[380px_1fr_320px]">
                 {/* Left Column: Ticket List */}
-                <section className="flex flex-col h-full min-h-0 bg-white">
+                <section
+                    className="flex flex-col h-full min-h-0 bg-white"
+                    style={{ borderRight: `1px solid ${dividerColor}` }}
+                >
                     <div className="flex-1 overflow-hidden">
                         <TicketList
                             tickets={INITIAL_TICKETS}
@@ -78,7 +95,10 @@ const InboxView = () => {
                 </section>
 
                 {/* Middle Column: Conversation */}
-                <section className="flex flex-col h-full min-h-0 bg-white relative z-10">
+                <section
+                    className="flex flex-col h-full min-h-0 bg-white relative z-10"
+                    style={{ borderRight: `1px solid ${dividerColor}` }}
+                >
                     {selectedTicket ? (
                         <ConversationThread ticket={selectedTicket} />
                     ) : (

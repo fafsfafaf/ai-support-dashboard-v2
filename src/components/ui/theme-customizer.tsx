@@ -79,6 +79,24 @@ export const ThemeCustomizer = () => {
                     </div>
                 </div>
 
+                {/* Divider Color Config */}
+                <div className="space-y-2">
+                    <div className="flex justify-between items-center text-sm">
+                        <label className="font-medium text-gray-700">Trennlinien Farbe</label>
+                        <span className="bg-gray-100 px-2 py-0.5 rounded text-gray-600 font-mono uppercase">
+                            {useTheme().dividerColor}
+                        </span>
+                    </div>
+                    <div className="flex gap-2 items-center">
+                        <input
+                            type="color"
+                            value={useTheme().dividerColor}
+                            onChange={(e) => useTheme().setDividerColor(e.target.value)}
+                            className="h-10 w-10 p-1 rounded cursor-pointer border border-gray-200"
+                        />
+                    </div>
+                </div>
+
                 <div className="pt-4 border-t border-gray-100">
                     <div className="text-xs text-gray-500 bg-gray-50 p-3 rounded-lg border border-gray-100">
                         <strong>Aktuelle Werte:</strong><br />
